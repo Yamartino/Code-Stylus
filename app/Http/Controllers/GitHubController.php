@@ -34,6 +34,7 @@ class GitHubController extends Controller {
   public function logout()
   {
     $this->github->endSession();
+    return redirect('/');
   }
 
 }
