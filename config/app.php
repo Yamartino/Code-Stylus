@@ -139,16 +139,17 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
+		'Style\Providers\AppServiceProvider',
+		'Style\Providers\BusServiceProvider',
+		'Style\Providers\ConfigServiceProvider',
+		'Style\Providers\EventServiceProvider',
+		'Style\Providers\RouteServiceProvider',
 
     /*
      * Stuart's Service Providers...
      */
     'Laravel\Socialite\SocialiteServiceProvider',
+    'Illuminate\Html\HtmlServiceProvider',
 
 	],
 
@@ -198,7 +199,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
     'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-
+    'Form'      => 'Illuminate\Html\FormFacade',
+    'HTML'		  => 'Illuminate\Html\HtmlFacade',
 	],
 
 ];

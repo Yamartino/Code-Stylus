@@ -1,9 +1,9 @@
 <?php namespace Style\Http\Middleware;
 
 use Closure;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
+use Style\User;
 
-class VerifyCsrfToken extends BaseVerifier {
+class LoggedInWithGitHub {
 
 	/**
 	 * Handle an incoming request.
@@ -14,7 +14,11 @@ class VerifyCsrfToken extends BaseVerifier {
 	 */
 	public function handle($request, Closure $next)
 	{
-		return parent::handle($request, $next);
+    if( ! User::whereRememberToken(session('remember_token'))->first() )
+    {
+      return redirect('/');
+    }
+		return $next($request);
 	}
 
 }
