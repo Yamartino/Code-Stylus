@@ -3,8 +3,6 @@
 use Style\Commands\SetRememberToken;
 use Style\GitHub;
 use Style\Http\Requests;
-use Style\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class GitHubController extends Controller {
 
