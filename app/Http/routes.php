@@ -12,3 +12,5 @@ Route::group(['middleware' => 'authGitHub'], function(){
   });
 });
 
+Route::resource('guide', 'GuideController');
+
