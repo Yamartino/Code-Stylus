@@ -11,44 +11,21 @@
                         {!! Form::open(['route' => 'guide.store']) !!}
 
                             <div class="form-group">
-                                {!! Form::label('subdomain', 'Subdomain (example laravel.codestyl.us)') !!}
-                                {!! Form::text('subdomain', null, ['class'=>'form-control']) !!}
+                                {!! Form::label('slug', 'Slug (example codestyl.us/slug-title)') !!}
+                                {!! $errors->first('slug','<div class="error">:message</div>') !!}
+                                {!! Form::text('slug', null, ['class'=>'form-control']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('title', 'Title') !!}
+                                {!! $errors->first('title','<div class="error">:message</div>') !!}
                                 {!! Form::text('title', null, ['class'=>'form-control']) !!}
                             </div>
 
                             {!! Form::label('content', 'Guide Markdown') !!}
+                            {!! $errors->first('content','<div class="error">:message</div>') !!}
                             <div id="epiceditor"></div>
-                            <textarea name="content" id="content" style="display: none;">##1. Indentation
----
-
-4 space indentations
-
-```markup
-<div>
-    <span>This span is indented with 4 spaces</span>
-</div>
-```
-
-##2. Brackets
----
-
-Brackets should start on the next line of the expression except for controls
-
-```php
-class Stuart()
-{
-    public function make()
-    {
-        if($test){
-            return true;
-        }
-    }
-}
-```</textarea>
+                            <textarea name="content" id="content" style="display: none;">@include('guide.create-content')</textarea>
                             <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="new">Markdown Cheatsheet</a>
                             <br>
                             *syntax highlighting does not show up in the preview mode on this page

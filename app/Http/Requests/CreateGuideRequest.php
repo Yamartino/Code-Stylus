@@ -22,7 +22,7 @@ class CreateGuideRequest extends Request {
 	public function rules()
 	{
 		return [
-			'subdomain' => 'required|alphadash|unique:guides',
+			'slug' => 'required|alphadash|unique:guides|max:100',
       'title'     => 'required',
       'content'   => 'required',
 		];

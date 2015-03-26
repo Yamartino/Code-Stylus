@@ -9,6 +9,6 @@ class Guide extends Model {
    *
    * @var array
    */
-  protected $fillable = ['subdomain', 'title', 'content'];
+  protected $fillable = ['slug', 'title', 'content'];
 
 }

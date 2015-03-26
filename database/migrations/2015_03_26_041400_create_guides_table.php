@@ -15,7 +15,7 @@ class CreateGuidesTable extends Migration {
 		Schema::create('guides', function(Blueprint $table)
 		{
 			$table->increments('id');
-      $table->string('subdomain', 30);
+      $table->string('slug', 100);
       $table->string('title');
       $table->text('content');
 			$table->timestamps();

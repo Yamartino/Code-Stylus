@@ -1,5 +1,4 @@
 <?php
-
 Route::get('/', 'WelcomeController@index');
 
 Route::get('login', 'GitHubController@login');
@@ -14,8 +13,6 @@ Route::group(['middleware' => 'authGitHub'], function(){
   });
 });
 
-Route::group(['domain' => '{guide}.stu.com'], function()
-{
-  Route::get('/', 'GuideController@show');
-});
+Route::get('{slug}', 'GuideController@show');
+
 

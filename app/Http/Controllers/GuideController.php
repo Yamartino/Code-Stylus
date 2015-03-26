@@ -1,5 +1,7 @@
 <?php namespace Style\Http\Controllers;
 
+use League\CommonMark\CommonMarkConverter;
+use Style\CodeParser;
 use Style\Guide;
 use Style\Http\Requests;
 use Style\Http\Requests\CreateGuideRequest;
@@ -32,23 +34,34 @@ class GuideController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+   * @param CreateGuideRequest $request
+   * @param Guide $guide
 	 * @return Response
 	 */
 	public function store(CreateGuideRequest $request, Guide $guide)
 	{
     $guide->create($request->all());
-    return redirect('http://'.$request->get('subdomain').'.stu.com');
+    return redirect($request->get('slug'));
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $slug
+   * @param  Guide  $guide
+   * @param CommonMarkConverter $markdown
 	 * @return Response
 	 */
-	public function show($guide, Guide)
+	public function show($slug, Guide $guide, CommonMarkConverter $markdown, CodeParser $parser)
 	{
-
+    if($data = $guide->whereSlug($slug)->first()){
+      $data->content = $markdown->convertToHtml($data->content);
+      $content = $parser->H1ToList($data->content);
+      $data->content = $content['content'];
+      $data->index = $content['index'];
+      return view('guide.show', $data);
+    }
+    return abort(404);
 	}
 
 	/**
