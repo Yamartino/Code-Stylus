@@ -150,6 +150,7 @@ return [
      */
     'Laravel\Socialite\SocialiteServiceProvider',
     'Illuminate\Html\HtmlServiceProvider',
+    'GrahamCampbell\Markdown\MarkdownServiceProvider',
 
 	],
 
@@ -201,6 +202,7 @@ return [
     'Socialize' => 'Laravel\Socialite\Facades\Socialite',
     'Form'      => 'Illuminate\Html\FormFacade',
     'HTML'		  => 'Illuminate\Html\HtmlFacade',
+    'Markdown'  => 'GrahamCampbell\Markdown\Facades\Markdown',
 	],
 
 ];
