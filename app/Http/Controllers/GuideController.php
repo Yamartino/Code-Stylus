@@ -1,6 +1,8 @@
 <?php namespace Style\Http\Controllers;
 
+use Style\Guide;
 use Style\Http\Requests;
+use Style\Http\Requests\CreateGuideRequest;
 use Style\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -32,9 +34,10 @@ class GuideController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateGuideRequest $request, Guide $guide)
 	{
-		//
+    $guide->create($request->all());
+    return redirect('http://'.$request->get('subdomain').'.stu.com');
 	}
 
 	/**
@@ -43,9 +46,9 @@ class GuideController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($guide, Guide)
 	{
-		//
+
 	}
 
 	/**

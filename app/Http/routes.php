@@ -14,5 +14,8 @@ Route::group(['middleware' => 'authGitHub'], function(){
   });
 });
 
-Route::resource('guide', 'GuideController');
+Route::group(['domain' => '{guide}.stu.com'], function()
+{
+  Route::get('/', 'GuideController@show');
+});
 
