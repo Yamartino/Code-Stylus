@@ -6231,3 +6231,21 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+.panel {
+  margin-top: 20px;
+  border: 1px solid #E6E6E6;
+}
+.form-control {
+  box-shadow: none;
+  border-radius: 3px;
+  border: 1px solid #E6E6E6;
+}
+#submit-guide {
+  margin-top: 15px !important;
+}
+#epiceditor {
+  border-radius: 3px;
+  border: 1px solid #E6E6E6;
+}
+
+/*# sourceMappingURL=app.css.map */
