@@ -22,7 +22,37 @@
 
                             {!! Form::label('content', 'Guide Markdown') !!}
                             <div id="epiceditor"></div>
-                            <textarea name="content" id="content" style="display: none;">TEST</textarea>
+                            <textarea name="content" id="content" style="display: none;">##1. Indentation
+---
+
+4 space indentations
+
+```markup
+<div>
+    <span>This span is indented with 4 spaces</span>
+</div>
+```
+
+##2. Brackets
+---
+
+Brackets should start on the next line of the expression except for controls
+
+```php
+class Stuart()
+{
+    public function make()
+    {
+        if($test){
+            return true;
+        }
+    }
+}
+```</textarea>
+                            <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="new">Markdown Cheatsheet</a>
+                            <br>
+                            *syntax highlighting does not show up in the preview mode on this page
+                            <br>
 
                             {!! Form::submit('Create Guide', ['class'=>'btn btn-primary', 'id'=>'submit-guide']) !!}
 
