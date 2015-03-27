@@ -31,4 +31,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['remember_token', 'github_token'];
 
+  public function currentUser(){
+    return $this->whereRememberToken(session('remember_token'))->first();
+  }
+
 }

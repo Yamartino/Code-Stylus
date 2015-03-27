@@ -15,11 +15,14 @@ class GuideController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
+   * @param Guide $guide
+   * @param User $user
 	 * @return Response
 	 */
-	public function index()
+	public function index(Guide $guide, User $user)
 	{
-
+    $guides = $guide->whereUserId($user->currentUser()->id)->get();
+    return view('guide.all', compact('guides'));
 	}
 
 	/**
@@ -37,11 +40,12 @@ class GuideController extends Controller {
 	 *
    * @param CreateGuideRequest $request
    * @param Guide $guide
+   * @param User $user
 	 * @return Response
 	 */
 	public function store(CreateGuideRequest $request, Guide $guide, User $user)
 	{
-    $user_id = $user->whereRememberToken(session('remember_token'))->first()->id;
+    $user_id = $user->currentUser()->id;
     $guide->create(array_merge(
       $request->all(),
       compact('user_id')

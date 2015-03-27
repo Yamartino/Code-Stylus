@@ -10,6 +10,8 @@
     <link href="{{ asset('/css/epiceditor.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/prism.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
