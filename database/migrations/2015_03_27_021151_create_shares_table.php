@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGuidesTable extends Migration {
+class CreateSharesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,10 @@ class CreateGuidesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('guides', function(Blueprint $table)
+		Schema::create('shares', function(Blueprint $table)
 		{
 			$table->increments('id');
-      $table->integer('user_id');
-      $table->boolean('private');
-      $table->string('slug', 100);
-      $table->string('title');
-      $table->text('content');
+      $table->string('username');
 			$table->timestamps();
 		});
 	}
@@ -31,7 +27,7 @@ class CreateGuidesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('guides');
+		Schema::drop('shares');
 	}
 
 }

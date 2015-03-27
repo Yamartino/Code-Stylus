@@ -6262,7 +6262,7 @@ h1 {
   font-size: 2em;
 }
 p {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 .guide-affix {
   position: fixed;
@@ -6279,7 +6279,7 @@ p {
   padding: 5px;
 }
 .guide-content {
-  padding-top: 20px;
+  padding-top: 25px;
 }
 footer {
   text-align: center;

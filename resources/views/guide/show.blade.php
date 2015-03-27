@@ -22,7 +22,7 @@
             </div>
         </div>
         <footer>
-            &copy;{{ date('Y') }} Code Stylus | Made with &lt;3 by <a href="http://knotlabs.com">Knot Labs</a>
+            &copy;{{ date('Y') }} Code Stylus | Made with &lt;3 by <a href="http://twitter.com/StuYam">Stuart Yamartino</a>
         </footer>
     </div>
 @endsection

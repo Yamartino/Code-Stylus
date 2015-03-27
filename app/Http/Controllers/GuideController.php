@@ -3,6 +3,7 @@
 use League\CommonMark\CommonMarkConverter;
 use Style\CodeParser;
 use Style\Guide;
+use Style\User;
 use Style\Http\Requests;
 use Style\Http\Requests\CreateGuideRequest;
 use Style\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class GuideController extends Controller {
 	 */
 	public function index()
 	{
-		//
+
 	}
 
 	/**
@@ -38,9 +39,13 @@ class GuideController extends Controller {
    * @param Guide $guide
 	 * @return Response
 	 */
-	public function store(CreateGuideRequest $request, Guide $guide)
+	public function store(CreateGuideRequest $request, Guide $guide, User $user)
 	{
-    $guide->create($request->all());
+    $user_id = $user->whereRememberToken(session('remember_token'))->first()->id;
+    $guide->create(array_merge(
+      $request->all(),
+      compact('user_id')
+    ));
     return redirect($request->get('slug'));
 	}
 

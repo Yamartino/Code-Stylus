@@ -29,7 +29,13 @@
                             <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="new">Markdown Cheatsheet</a>
                             <br>
                             *syntax highlighting does not show up in the preview mode on this page
-                            <br>
+                            <br><br>
+
+                            <div class="form-group">
+                                {!! Form::checkbox('private', '1') !!}
+                                &nbsp;&nbsp;
+                                {!! Form::label('private', 'Make Guide Private?') !!}
+                            </div>
 
                             {!! Form::submit('Create Guide', ['class'=>'btn btn-primary', 'id'=>'submit-guide']) !!}
 
