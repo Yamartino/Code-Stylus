@@ -29,7 +29,7 @@ return [
 	|
 	*/
 
-	'lifetime' => 120,
+	'lifetime' => 60*24*90, //Set for 3 months
 
 	'expire_on_close' => false,
 
@@ -44,7 +44,7 @@ return [
 	|
 	*/
 
-	'encrypt' => false,
+	'encrypt' => true,
 
 	/*
 	|--------------------------------------------------------------------------

@@ -1,14 +1,14 @@
 <?php namespace Style\Http\Controllers;
 
 use Style\Commands\SetRememberToken;
-use Style\GitHub;
+use Style\GitHubHandler;
 use Style\Http\Requests;
 
 class GitHubController extends Controller {
 
   protected $github;
 
-  public function __construct(GitHub $github)
+  public function __construct(GitHubHandler $github)
   {
     $this->github = $github;
   }
@@ -26,7 +26,7 @@ class GitHubController extends Controller {
       new SetRememberToken($user)
     );
 
-    return redirect('done');
+    return redirect('guides');
   }
 
   public function logout()
