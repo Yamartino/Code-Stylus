@@ -1,11 +1,12 @@
 <?php namespace Style\Http\Controllers;
 
+use Style\Guide;
 use Style\Share;
 use Style\Http\Requests;
+use Style\Http\Requests\AddPrivacyUser;
 use Style\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Style\Shares;
 
 class PrivacyController extends Controller {
 
@@ -19,18 +20,24 @@ class PrivacyController extends Controller {
   public function show($slug, Share $share)
   {
     $users = $share->getShareUsersBySlug($slug);
-    return view('privacy.create')->with(compact($slug, $users));
+    return view('privacy.show', compact('slug', 'users'));
   }
 
   /**
    * Save a privacy user to the DB
    *
    * @param  string  $slug
+   * @param  Share  $share
+   * @param  Guide  $guide
+   * @param  AddPrivacyUser  $request
    * @return Response
    */
-  public function store($slug)
+  public function store($slug, Share $share, Guide $guide, AddPrivacyUser $request)
   {
-
+    $share->guide_id = $guide->whereSlug($slug)->first()->id;
+    $share->username = $request->username;
+    $share->save();
+    return redirect("guides/$slug/privacy");
   }
 
   /**
@@ -39,9 +46,13 @@ class PrivacyController extends Controller {
    * @param  string  $slug
    * @return Response
    */
-  public function destroy($slug)
+  public function destroy($slug, $username, Share $share)
   {
-    //
+    $share->leftJoin('guides', 'guides.id', '=', 'shares.guide_id')
+          ->where('shares.username', $username)
+          ->where('guides.slug', $slug)
+          ->delete();
+    return redirect("guides/$slug/privacy");
   }
 
 

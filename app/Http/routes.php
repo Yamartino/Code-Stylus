@@ -8,7 +8,9 @@ Route::get('logout', 'GitHubController@logout');
 Route::group(['middleware' => 'authGitHub'], function(){
   Route::resource('guides','GuideController',['only' => ['index', 'create', 'store']]);
   Route::group(['middleware' => 'guideOwner'], function(){
-    Route::get('guides/{slug}/privacy', 'GuideController@show');
+    Route::get('guides/{slug}/privacy', 'PrivacyController@show');
+    Route::post('guides/{slug}/privacy', 'PrivacyController@store');
+    Route::get('guides/{slug}/privacy/{username}', 'PrivacyController@destroy');
     Route::resource('guides','GuideController',['only' => ['edit', 'update', 'destroy']]);
   });
 });
