@@ -52,7 +52,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     $this->github_token   = $GitHubUser->token;
     $this->avatar         = $GitHubUser->avatar;
     $this->profile        = $GitHubUser->user['html_url'];
-    $user->remember_token = str_random(100);
+    $this->remember_token = str_random(100);
     $this->save();
     return $this;
   }

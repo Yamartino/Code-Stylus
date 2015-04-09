@@ -20,10 +20,10 @@ class GitHubHandler {
   public function handleProviderCallback()
   {
     if( $GitHubUser = Socialize::with('github')->user()) {
-      if( $userObject = $this->user->whereUsername($GitHubUser->nickname)->first()){
-        return $userObject;
+      $user = $this->user->whereUsername($GitHubUser->nickname)->first();
+      if( ! $user ){
+        $user = $this->user->createUser($GitHubUser);
       }
-      $user = $this->user->createUser($GitHubUser);
       return $this->createSession($user);
     }
     return $this->fail->gitHubAuthError();

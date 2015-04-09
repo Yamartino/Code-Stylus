@@ -20,12 +20,7 @@ class GitHubController extends Controller {
 
   public function handleLogin()
   {
-    $user = $this->github->handleProviderCallback();
-
-    $this->dispatch(
-      new SetRememberToken($user)
-    );
-
+    $this->github->handleProviderCallback();
     return redirect('guides');
   }
 
