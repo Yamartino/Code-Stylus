@@ -20,4 +20,21 @@ class Guide extends Model {
     'private' => 'boolean',
   ];
 
+  public function isPrivate($slug){
+    return $this->whereSlug($slug)->first()->private;
+  }
+
+  public function userHasPermission($user, $slug){
+    return $this->leftJoin('shares', 'guides.id', '=', 'shares.guide_id')
+                ->where('shares.username', $user->username)
+                ->where('guides.slug', $slug)
+                ->first()
+                ||
+                $this->whereSlug($slug)->first()->user_id == $user->id;
+  }
+
+  public function isOwner($slug, $user){
+    return $this->whereSlug($slug)->whereUserId($user->id);
+  }
+
 }

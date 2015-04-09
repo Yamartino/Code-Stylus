@@ -8,7 +8,7 @@
                     <div class="panel-heading">Create Code Stylus Guide</div>
 
                     <div class="panel-body">
-                        <a href="{{ route('guide.create') }}" class="btn btn-primary">Create New</a>
+                        <a href="{{ route('guides.create') }}" class="btn btn-primary">Create New</a>
                         <table class="table">
                         @foreach($guides as $guide)
                             <tr>
@@ -18,6 +18,11 @@
                                 </td>
                                 <td><a href="/{{ $guide->slug }}">View</a></td>
                                 <td>Edit</td>
+                                <td>
+                                    @if($guide->private)
+                                        <a href="/guides/{{ $guide->slug }}/privacy">Add User Access</a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </table>

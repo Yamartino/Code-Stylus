@@ -15,8 +15,8 @@ class GuideController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
-   * @param Guide $guide
-   * @param User $user
+   * @param  Guide $guide
+   * @param  User $user
 	 * @return Response
 	 */
 	public function index(Guide $guide, User $user)
@@ -58,7 +58,8 @@ class GuideController extends Controller {
 	 *
 	 * @param  int  $slug
    * @param  Guide  $guide
-   * @param CommonMarkConverter $markdown
+   * @param  CommonMarkConverter $markdown
+   * @param  CodeParser $parser
 	 * @return Response
 	 */
 	public function show($slug, Guide $guide, CommonMarkConverter $markdown, CodeParser $parser)

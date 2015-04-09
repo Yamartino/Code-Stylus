@@ -28,6 +28,8 @@ class Kernel extends HttpKernel {
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Style\Http\Middleware\RedirectIfAuthenticated',
     'authGitHub' => 'Style\Http\Middleware\LoggedInWithGitHub',
+    'visibility' => 'Style\Http\Middleware\CheckVisibility',
+    'guideOwner' => 'Style\Http\Middleware\guideOwner',
 	];
 
 }

@@ -5,9 +5,11 @@ use \Socialize;
 class GitHubHandler {
 
   protected $user;
+  protected $fail;
 
-  public function __construct(User $user){
+  public function __construct(User $user, Fail $fail){
     $this->user = $user;
+    $this->fail = $fail;
   }
 
   public function redirectToProvider()
@@ -21,16 +23,15 @@ class GitHubHandler {
       if( $userObject = $this->user->whereUsername($GitHubUser->nickname)->first()){
         return $userObject;
       }
-      $this->user->username = $GitHubUser->nickname;
-      $this->user->name = $GitHubUser->name;
-      $this->user->github_token = $GitHubUser->token;
-      $this->user->avatar = $GitHubUser->avatar;
-      $this->user->profile = $GitHubUser->user['html_url'];
-      $this->user->save();
-
-      return $this->user;
+      $user = $this->user->createUser($GitHubUser);
+      return $this->createSession($user);
     }
-    return redirect('/');
+    return $this->fail->gitHubAuthError();
+  }
+
+  private function createSession($user){
+    session(['remember_token' => $user->remember_token]);
+    return $user;
   }
 
   public function endSession()

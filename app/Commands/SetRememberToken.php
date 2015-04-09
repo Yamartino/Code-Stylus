@@ -3,7 +3,6 @@
 use Style\Commands\Command;
 
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Support\Str;
 
 class SetRememberToken extends Command implements SelfHandling {
 
@@ -25,10 +24,7 @@ class SetRememberToken extends Command implements SelfHandling {
 	 */
 	public function handle()
 	{
-    $token = Str::random(100);
-    $this->user->remember_token = $token;
-    $this->user->save();
-    session(['remember_token'=> $token]);
+
   }
 
 }

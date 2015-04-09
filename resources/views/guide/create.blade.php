@@ -8,7 +8,7 @@
                     <div class="panel-heading">Create Code Stylus Guide</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['route' => 'guide.store']) !!}
+                        {!! Form::open(['route' => 'guides.store']) !!}
 
                             <div class="form-group">
                                 {!! Form::label('slug', 'Slug (example codestyl.us/slug-title)') !!}

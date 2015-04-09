@@ -16,7 +16,7 @@ class LoggedInWithGitHub {
 	{
     if( ! User::whereRememberToken(session('remember_token'))->first() )
     {
-      return redirect('/');
+      return redirect('/login');
     }
 		return $next($request);
 	}
