@@ -11,7 +11,7 @@ Route::group(['middleware' => 'authGitHub'], function(){
     Route::get('guides/{slug}/privacy', 'PrivacyController@show');
     Route::post('guides/{slug}/privacy', 'PrivacyController@store');
     Route::get('guides/{slug}/privacy/{username}', 'PrivacyController@destroy');
-    Route::resource('guides','GuideController',['only' => ['edit', 'update', 'destroy']]);
+//    Route::resource('guides','GuideController',['only' => ['edit', 'update', 'destroy']]);
   });
 });
 

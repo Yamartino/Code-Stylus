@@ -1,7 +1,7 @@
 <?php namespace Style\Http\Controllers;
 
 use League\CommonMark\CommonMarkConverter;
-use Style\CodeParser;
+use Style\Markdown\CodeParser;
 use Style\Guide;
 use Style\User;
 use Style\Http\Requests;
@@ -78,11 +78,13 @@ class GuideController extends Controller {
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  string  $slug
+   * @param  Guide  $guide
 	 * @return Response
 	 */
-	public function edit($slug)
+	public function edit($slug, Guide $guide)
 	{
-		//
+    $guide = $guide->whereSlug($slug);
+    return view('guide.edit', compact('guide'));
 	}
 
 	/**
