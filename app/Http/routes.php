@@ -6,10 +6,10 @@ Route::get('verify', 'GitHubController@handleLogin');
 Route::get('logout', 'GitHubController@logout');
 
 Route::group(['middleware' => 'authGitHub'], function(){
-  Route::resource('guides','GuideController',['only' => ['create', 'store', 'update', 'index']]);
+  Route::resource('guides','GuideController',['only' => ['index', 'create', 'store']]);
   Route::group(['middleware' => 'guideOwner'], function(){
-    Route::get('guides/{slug}/privacy', 'GuideController@privacy');
-    Route::resource('guides','GuideController',['only' => ['edit']]);
+    Route::get('guides/{slug}/privacy', 'GuideController@show');
+    Route::resource('guides','GuideController',['only' => ['edit', 'update', 'destroy']]);
   });
 });
 
