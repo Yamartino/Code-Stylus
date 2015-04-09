@@ -33,15 +33,17 @@
 			}
 
 			.quote {
-				font-size: 24px;
+				font-size: 30px;
+                line-height: 50px;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 10</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
+				<div class="title">Laravel 5 (in action)</div>
+				<div class="quote">Twitter: @StuYam</div>
+                <div class="quote">GitHub: @Yamartino</div>
 			</div>
 		</div>
 	</body>

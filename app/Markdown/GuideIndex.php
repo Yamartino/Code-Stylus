@@ -1,4 +1,4 @@
-<?php namespace Style;
+<?php namespace Style\Markdown;
 
 class GuideIndex {
   private static $array;
